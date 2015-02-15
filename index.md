@@ -8,7 +8,7 @@ tagline: Never give up =)
 
 Hi, I'm Chester. I'm a software enginner with my regular job. Currently, I deal with some problems in LAN switch no matter L2 Protocols or basic elements like MAC/PHY/CPU/Flash/RAM. Except for my regular job, I also leran Python scripting and web site development (HTML/CSS/Javascript).
 
-Here's my blog posts list.
+Here's my posts list.
 
 <ul class="posts">
   {% for post in site.posts %}
