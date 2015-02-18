@@ -1,13 +1,15 @@
 ---
 layout: page
-title : Archive
+title : Archives
 header : Post Archive
 group: navigation
 ---
 {% include JB/setup %}
 
-<h2>This are all what I've done(or in presentence).</h2>
+<h2>These are all what I've done before.</h2>
 <ul>
-{% assign pages_list = site.pages %}
-{% include JB/pages_list %}
+{% for post in site.categories.archive %}
+    <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
 </ul>
+
