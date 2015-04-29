@@ -8,7 +8,7 @@ tags: [python, appengine, ndb]
 {% include JB/setup %}
 
 
-### NDB in App Engine (Unfinish post)###
+### NDB in App Engine (Unfinished post)###
 
 ####_Entities and Models_####
 [App engine's NDB](https://cloud.google.com/appengine/docs/python/ndb/) is a persistent storage whcih is promoted by Google Cloud Platform. It features in schemaless object datastore, automatic caching, sophisticated queries and atomic transactions.
