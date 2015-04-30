@@ -89,4 +89,3 @@ Or by using the entity
 
 	$> b.key.delete()
 
-####Group your entities by Key object####
