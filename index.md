@@ -6,9 +6,11 @@ tagline: Never give up =)
 {% include JB/setup %}
 
 
-Hi, I'm Chester. I'm a software enginner in my regular job. So far I deal with some problems in LAN switch like L2 Protocols, RTOS(Embedded Linux) or basic components' driver(MAC/PHY/CPU/Flash/RAM). Except for my regular job, I also learn Linux, Python scripting language and website development (HTML/CSS/Javascript).
+Hi, I'm Chester. I'm a software enginner in my regular job. So far I deal with problems in LAN switch protocols, RTOS(Embedded Linux) or basic components' driver and develope diagnostic code.
 
-I also have some experience with web crawler development and several SaaS based in multiple PaaS platforms like Heroku, Google App Engine(Google Cloud Platform) and OpenShift. If you are interesting with what I've done, please go to `Archives` page to know me more.
+Except for my regular job, I also learn Linux, Python scripting language and website development. Also,I have some experience with web crawler(spider) and several PaaS platforms like Heroku, Google App Engine (Google Cloud Platform).
+
+If you are interesting with what I've done, please go to `Archives` page to know me more.
 
 Here's my posts list.
 
