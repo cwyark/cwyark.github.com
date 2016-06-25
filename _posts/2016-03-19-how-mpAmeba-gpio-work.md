@@ -7,6 +7,7 @@ tags: [python, rtl8195a, micropython, ameba]
 
 It's quite simple to handle a GPIO pin in micropython.
 
+<!--more-->
 ```python
 >>> from hardware import Pin
 >>> a = Pin("PA_5", dir=Pin.OUT)
@@ -14,6 +15,7 @@ It's quite simple to handle a GPIO pin in micropython.
 >>> a.value(1)
 >>> a.value(0)
 ```
+
 When you call the method a.toogle(), PA_5 will reverse it's IO status. a.value(x) is to directly to set the IO value. (0 or 1 is available)
 
 Here's my little experiment to see how fast I can to toggle the GPIO ... (The tested pin is PA_5, if you don't know the pin name, check this [plot](http://cwyark.github.io/mpiot/rtl8195a/intro.html#realtek-ameba-board))

@@ -5,6 +5,7 @@ category: tutorial
 tags: [python, appengine, ndb]
 ---
 
+<!--more-->
 ### _Entities and Models_ ###
 [App engine's NDB](https://cloud.google.com/appengine/docs/python/ndb/) is a persistent storage whcih is promoted by Google Cloud Platform. It features in schemaless object datastore, automatic caching, sophisticated queries and atomic transactions.
 
@@ -19,6 +20,7 @@ class User(ndb.Model):
     age = ndb.IntegerProperty()
     location = ndb.GeoPtProperty()
 ```
+
 
 Here's a class `User` which is inherited from `ndb.Model`, and `name`, `age`, `location` are the properties of `User`. For more information about properties, you could check [here](https://cloud.google.com/appengine/docs/python/ndb/properties).
 

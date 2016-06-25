@@ -5,6 +5,7 @@ category: tutorial
 tags: [python, appengine, ndb]
 ---
 
+<!--more-->
 ### Query Entities ###
 In previous talk, every entity has an unique `Key` object. You can retrive your entity by using the `Key`.
 
@@ -14,6 +15,7 @@ In previous talk, every entity has an unique `Key` object. You can retrive your 
 >>> b_key = a_key.urlsafe()     # duplicate another key from a_key
 >>> b = ndb.Key(urlsafe=b_key)  # now b is equal to a entity
 ```
+
 But how could we retrive a set of entities by a specific condition? We can use the `query` method of the `Model` class.
 
 For example, there are a list of `User` entities below.

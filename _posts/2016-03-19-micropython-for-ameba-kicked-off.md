@@ -7,7 +7,9 @@ tags: [python, rtl8195a, micropython, ameba]
 
 #### What's Ameba board ? ####
 
+<!--more-->
 Ameba board is based on RTL8195A SoC by Realtek. RTL8195A features in WiFi, NFC and other peripherals like GPIO, SPI, I2C, ADC, PWM and H/W crypto engine... Developers(or called Makers) can make their own wireless product by using Arduino SDK(Realtek support).
+
 
 Though Arduino SDK is suffcient for most applications, it still need compiled every time when you upload your code, even you just want to change one line of your code. For me, it's quite inconvenient. That's the reason why I need a novel way to interface the SoC.
 

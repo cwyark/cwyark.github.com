@@ -6,15 +6,19 @@ tags: [python, flask, restful-api]
 ---
 
 #### Why RESTful API? ####
+
 In general, the web page's view (every graph and text you see on the browser) are generated from the backend server and send out through HTTP/HTTPS to client's browser. Here's an example code if we use flask and jinja template engine ...
+
     
 ``` python
+{% highight python %}
 @app.route("/", method=["GET", "POST"])
 def index():
     users = User.query.all()
     fruits = Fruit.query.all()
     return render_template('index.html', r_users=users, r_fruits=fruits)
 ```
+<!--more-->
 
 The `index.html` template (processed by jinja template engine) would be something like this.
 
