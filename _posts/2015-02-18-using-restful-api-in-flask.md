@@ -6,16 +6,17 @@ tags: [python, flask, restful-api]
 ---
 
 #### Why RESTful API? ####
-In traditional way, the page's view (that means the view which shown on the browser) are generated from the backend service. For example, if we use flask and jinja template engine ...
+In general, the web page's view (every graph and text you see on the browser) are generated from the backend server and send out through HTTP/HTTPS to client's browser. Here's an example code if we use flask and jinja template engine ...
     
 ``` python
 @app.route("/", method=["GET", "POST"])
 def index():
     users = User.query.all()
-    return render_template('index.html', r_users=users)
+    fruits = Fruit.query.all()
+    return render_template('index.html', r_users=users, r_fruits=fruits)
 ```
 
-The `index.html` template (which will be processed by jinja) is something like this
+The `index.html` template (processed by jinja template engine) would be something like this.
 
 ``` html
 <html>
@@ -28,52 +29,33 @@ The `index.html` template (which will be processed by jinja) is something like t
             <li> My name is { { user.name } }, and I'm { {user.age} } years old </li>
         { % endfor % }
         </ul>
-    </body>
-</html>
-```
-
-While every `request` receieved, it tells the backend service to query the `User model` from the database and put it in the `index.html` template.
-
-However, under this structure, server(backend service) and client(your browser) are binding with each other. For developers, once the backend service's rule has changed, the template should have be modified. 
-
-And there is another example, if there are two types of model (`user` and `fruit`) in your template.
-
-``` html
-<html>
-    <head>
-        <title> My Title </title>
-    </head>
-    <body>
-        <ul>
-        { % for user in r_users % }
-            <li>My name is { { user.name } }, and I'm { {user.age} } years old</li>
-        { % endfor % }
-        </ul>
-
         <ul>
         { % for fruit in r_fruits % }
             <li>This is a/an { { fruit.name } }, and I like it</li>
         { % endfor % }
         </ul>
+
     </body>
 </html>
 ```
 
-Your backend service should be like this...
+At server side, every `http request` receieved, it tells the request handler to query the `User model` and `Fruit model` from database and put it in the `index.html` template.
 
-``` python
-@app.route("/", method=["GET", "POST"])
-def index():
-    users = User.query.all()
-    fruits = Fruit.query.all()
-    return render_template('index.html', r_users=users, r_fruits=fruits)
-```
+Here's the procedure on every request.
 
-See! You need to query two models at once if you want to render this template! Which means whenever you refresh this page, backend service should query all of the models from the database everytime. 
+1. HTTP(s) request recieved
+2. Database query
+3. Template read from filesystem (disk)
+4. Put queried data to template engine and generate a page view
+5. Response generated view
 
-And there's one thing you should know, querying from database may cost your server's resource. Moreover, most of PaaS platforms cost money when you are interactive with their database.
+Under such architecture, server might have more loading to process the request. Also, whenever client refresh the page, backend server needs to redo the procedure again ..
 
-RESTful API may help you to seperate the server and the client, which makes your web applications more flexiable and extensiable. 
+One thing you should know, database querying and filesystem(hard disk) accessing may cost your server's resource. Most of PaaS platforms cost money when you are accessing their database.
+
+RESTful API may help you seperate server and client, which makes your web applications more flexiable and extensiable. (or reduce cost maybe ..)
+
+But how? Javascript at client side and REFTful API at server side. I'm not going to introduce Javascript here because it will be too much.
 
 ### Designing RESTful API(s) by using flask-restful ###
 
@@ -106,7 +88,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./test.db'
 from app import api, db
 ```
 
-Now try to `cd` to your project root and run the web application by using `gunicorn`:
+Now try to `cd` to your project root and run the web application by `gunicorn`:
 
 ``` bash
 user$ gunicorn app:app --reload
@@ -140,7 +122,7 @@ db.create_all()
 
 #### _Design your RESTful API_ ####
 
-In api.py , design the `UserApi` class as your RESTful API. In `UserApi`, we define `GET` and `POST` methods that on;y these two methods can access the API.
+In api.py , design the `UserApi` class as your RESTful API. In `UserApi`, we define `GET` and `POST` methods that only these two methods can access the API.
 
 `GET` method can get user's id name, age and `POST` can add a new user.
 
@@ -173,16 +155,17 @@ class UserApi(Resource):
 api.add_resource(UserApi, "/api/users/<name>")
 ```
 
-For example, you can add a new user `Marry` by using `POST` method to http://your.domain.com/api/users/Marry(And also there should be a `age` in the form). If you want to know the user `Marry`'s age, you can use `GET` method to http://your.domain.com/api/users/Marry.
+For example, you can add a new user `Marry` by using `POST` method to http://your.domain.com/api/users/Marry. If you want to know the user `Marry`'s age, you can use `GET` method to http://your.domain.com/api/users/Marry.
 
 #### _Test your restful api_ ####
 
 Now use the gunicorn to active the application, `cd` to the project root and run ...
+
 ``` bash
 user$ gunicorn app:app --reload --access-logfile -
 ```
 
-Then use `curl` command (if you are using Unix like system) to post some fake data.
+Then use `curl` command (if curl is available) to post fake data.
 
 ``` bash
 user$ curl -i -d "age=14" -X POST http://127.0.0.1:8000/api/users/john

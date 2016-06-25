@@ -6,7 +6,7 @@ category: archive
 tags: [python, crawler]
 ---
 
-Most website provide informations for users, but these informations are only shown on the page's view and you could not retrieve specific informations on the page at once. Moreover, they didn't provide any link that can download the historical data in csv, excel file. All of the informations can only retrieved by manual. So people have to use their mouse (or keyboard maybe?) and double click, right click , and then copy and paste. That is very inefficient.Further, if you retrieve these informations manually , you know people may easily get tired if they do the copy and paste repeatly, not to mention tens of thousands targets are waiting for.
+Most website provide informations for users, but these informations are only shown on the page's view and you could not retrieve particular informations on the page at once. Moreover, they didn't provide any link that can download the historical data in csv, excel file. All of the informations can only retrieved by manual. So people have to use their mouse (or keyboard maybe?) and double click, right click , and then copy and paste. That is very inefficient.Further, if you retrieve these informations manually , you know people may easily get tired if they do the copy and paste repeatly, not to mention tens of thousands targets are waiting for.
 
 
 __Web crawler can make your data retriving from the internet `easiler`.__
