@@ -23,6 +23,7 @@ Micropython is a lightwight python interperter specific for microcontroller. Dev
 * SPI MASTER/SLAVE (not ready)
 * ADC (not ready)
 * PWM (not ready)
+* RTC and sec/msec/usec delay
 * Watchdog
 * WiFi Station mode  (AP mode is not ready)
 * NFC (not ready)
