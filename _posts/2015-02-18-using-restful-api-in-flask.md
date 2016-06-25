@@ -11,7 +11,6 @@ In general, the web page's view (every graph and text you see on the browser) ar
 
     
 ``` python
-{% highight python %}
 @app.route("/", method=["GET", "POST"])
 def index():
     users = User.query.all()
