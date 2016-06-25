@@ -1,5 +1,5 @@
 ---
-title: "Micropython ports for Ameba board has kicked off !"
+title: "Micropython@Ameba ports has kicked off !"
 description: ""
 category: tutorial
 tags: [python, rtl8195a, micropython, ameba]
