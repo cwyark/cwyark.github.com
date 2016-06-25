@@ -2,7 +2,7 @@
 title: "Web Crawler"
 tagline: "Help you to fetch a large scale of data from the Internet"
 description: "crawlers can fetch informations from several sites."
-category: archive
+category: article
 tags: [python, crawler]
 ---
 
