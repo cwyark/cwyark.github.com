@@ -2,6 +2,7 @@
 title: "Micropython@Ameba ports has kicked off !"
 description: ""
 category: tutorial
+project: micropython_ameba
 tags: [python, rtl8195a, micropython, ameba]
 ---
 

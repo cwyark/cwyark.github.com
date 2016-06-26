@@ -2,6 +2,7 @@
 title: "How GPIO and I/O Interrupt works in MicroPython@Ameba ?"
 description: ""
 category: tutorial
+project: micropython_ameba
 tags: [python, rtl8195a, micropython, ameba]
 ---
 
