@@ -6,11 +6,15 @@ project: micropython_ameba
 tags: [python, rtl8195a, micropython, ameba]
 ---
 
-You can control your micropython@Ameba's WiFi in few lines.
+You can control your MicroPython@Ameba's WiFi in few lines.
 
 <!--more-->
 
-Station mode and AP mode are available in RTL8195A, but AP mode has not implement yet. (Maybe couple weeks later)
+!!New content updated in 2016-09-18!!
+
+Station mode and AP mode are available in RTL8195A's low level driver, and MicroPython@Ameba is also supported.
+
+**Station mode example**
 
 Here's an example for station mode. Note that when connection is failed, it will raise an OSError exception.
 
@@ -20,15 +24,15 @@ Here's an example for station mode. Note that when connection is failed, it will
 >>> my_ssid = "MY-AP-SSID"
 >>> my_auth = (WLAN.WPA2_AES_PSK, "MY-AP-PASSWORD")
 >>> try:
-...     wifi.connect(my_ssid, my_auth)
+...     wifi.connect(ssid=my_ssid, auth=my_auth, dhcp=True)
 ... except OSError as e:
-...     print("wifi connection failed")
+...     print("Connect to %s failed" % my_ssid)
 ...     print(e)
 ```
 
-The reason why authenication fail may be the wrong ssid, wrong password or the wrong authenication type.
+Authenication fail may caused by the wrong ssid, wrong password or the wrong authenication type.
 
-Here's the list of supported security type list, when you are connecting to an AP, be sure you choose the right type.
+Here's the list of supported security type list, when you are connecting to an AP, be sure you choose the right security type.
 
 * WLAN.SECURITY_OPEN
 
@@ -49,9 +53,39 @@ Password will be ignored in WLAN.SECURITY_OPEN
 * WLAN.SECURITY_WPS_OPEN
 * WLAN.SECURITY_WPS_SECUR
 
-Also, there's some object method you can use.
+**AP mode example**
 
-Like you can get the mac address.
+Here's the AP mode example. It's quite simple, doesn't it?
+
+``` python
+>>> from wireless import WLAN
+>>> wifi = WLAN(mode=WLAN.AP)
+>>> my_ssid = "MY-AP-SSID"
+>>> my_auth = (WLAN.WPA2_AES_PSK, "MY-AP-PASSWORD")
+>>> wifi.start_ap(ssid=my_ssid, auth=my_auth)
+```
+
+**Station/AP hybrid mode example**
+
+If you need hybrid mode (STA_AP mode), not problem.
+
+``` python
+>>> from wireless import WLAN
+>>> sta, ap = WLAN(mode=WLAN.STA_AP)
+# It will return a tuple containing sta and ap when mode=WLAN.STA_AP
+>>> ap_ssid = "TARGET-AP-SSID"
+>>> ap_auth = (WLAN.WPA2_AES_PSK, "TARGET-AP-PASSWORD")
+>>> sta.connect(ssid=target_ssid, auth=target_auth, dhcp=True)
+>>> print("now set up the AP")
+>>> my_ssid = "MY-SSID"
+>>> my_auth = (WLAN.WPA2_AES_PSK, "MY-AP-PASSWORD")
+>>> ap.start_ap(ssid=my_ssid, auth=my_auth)
+```
+
+
+Also, there's some methods you can use.
+
+Like you can get the mac address of your NIC.
 
 ``` python
 >>> from wireless import WLAN
@@ -59,48 +93,52 @@ Like you can get the mac address.
 >>> wifi.mac()
 '28:c2:dd:dd:42:7d'
 ```
-
-You can scan networks nearby. WLAN.scan() will return a list of dictionaries.
+You can Scan networks nearby. WLAN.scan() will return a list of dictionaries.
 
 ``` python
 >>> from wireless import WLAN
 >>> wifi = WLAN(mode=WLAN.STA)
 >>> for i in range(10):
 ...     ap_list = wifi.scan()
-...     for ap in ap_list:
-...           print("ssid = %s, bssid = %s, rssi = %d, channel = %d" % (ap.ssid, ap.bssid, ap.rssi, ap.channel))
+...     if len(ap_list) != 0:
+...         for ap in ap_list:
+...             print("ssid = %s, bssid = %s, rssi = %d, channel = %d" % (ap.ssid, ap.bssid, ap.rssi, ap.channel))
 ```
 
-Get the RSSI value only when you are connected to the AP.
+Get the RSSI  only when you are connected to the AP.
 
 ``` python
 >>>  wifi.rssi()
 -51
 ```
 
-### DHCP or static IP? ###
+### Dynamic IP (DHCP client) or static IP? ###
 
-After AP authentication, microptyhon@Ameba will not help you to query the IP via DHCP.
-
-_You need to do it self, use `network` module_
+In station mode, after AP authentication, MicroPython@Ameba will help you to fetch the IP from DHCP server by assigning the `dhcp=True` argument.
 
 ``` python
->>> import network 
->>> local_ip = network.ip()
->>> try:
-...     local_ip.dhcp_request(100)
-... except OSError as e:
-...     print("DHCP failed")
+>>> from wireless import WLAN
+>>> wifi = WLAN(mode=WLAN.STA)
+>>> my_ssid = "MY-AP-SSID"
+>>> my_auth = (WLAN.WPA2_AES_PSK, "MY-AP-PASSWORD")
+... wifi.connect(ssid=my_ssid, auth=my_auth, dhcp=True) # assign argument dhcp=True
+```
+
+Alternatively, you can do this on your own.
+
+``` python
+>>> from wireless import WLAN
+>>> wifi = WLAN(mode=WLAN.STA)
+>>> my_ssid = "MY-AP-SSID"
+>>> my_auth = (WLAN.WPA2_AES_PSK, "MY-AP-PASSWORD")
+>>> wifi.connect(ssid=my_ssid, auth=my_auth)
+>>> wifi_netif = wifi.getnetif()
+>>> wifi_netif.dhcp_request(100)
+>>> print(wifi_netif)
 ```
 
 Or you might want to use static IP, the default ip is `192.168.3.2/24` and the gateway is `192.168.3.1`.
 
-If you are not sure what your IP is, just print the ip object.
+If you are not sure what your IP is, just print the netif object.
 
-``` python
->>> import network 
->>> local_ip = network.ip()
->>> print(local_ip)
-```
-
-For more informations, you could check this [url](http://cwyark.github.io/mpiot/rtl8195a/modules/wireless_wlan.html).
+For more informations, please check this [url](http://cwyark.github.io/mpiot/rtl8195a/modules/wireless_wlan.html).
