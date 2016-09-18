@@ -9,8 +9,7 @@ tags: [python, rtl8195a, micropython, ameba]
 #### What's Ameba board ? ####
 
 <!--more-->
-Ameba board is based on RTL8195A SoC by Realtek. RTL8195A features in WiFi, NFC and other peripherals like GPIO, SPI, I2C, ADC, PWM and H/W crypto engine... Developers(or called Makers) can make their own wireless product by using Arduino SDK(Realtek support).
-
+Ameba board is based on RTL8195A SoC by Realtek. RTL8195A features in WiFi, NFC and other peripherals like GPIO, SPI, I2C, ADC, PWM and H/W crypto engine... Developers (or called Makers) can make their own wireless product by using Arduino SDK (Realtek support).
 
 Though Arduino SDK is suffcient for most applications, it still need compiled every time when you upload your code, even you just want to change one line of your code. For me, it's quite inconvenient. That's the reason why I need a novel way to interface the SoC.
 
@@ -24,18 +23,20 @@ Micropython is a lightwight python interperter specific for microcontroller. Dev
 * GPIO and external pin interrupt (ISR)
 * I2C MASTER
 * SPI MASTER/SLAVE (not ready)
-* ADC (not ready)
+* ADC
+* DAC
+* SDIO
 * PWM (not ready)
 * RTC and sec/msec/usec delay
 * Watchdog
-* WiFi Station mode  (AP mode is not ready)
+* WiFi Station mode, AP mode and STA/AP mode.
 * NFC (not ready)
 * Lwip stack
     * echo ping request
     * DHCP or static IP
     * posix like TCP/UDP Server/Client socket 
-* SSL (not ready)
-* Internal flash filesystem (FatFS with 500KB)
+* SSL (client)
+* Internal flash filesystem (FatFS with 200KB)
 * Standard file open/read/write/close, ex:
 
 ``` python

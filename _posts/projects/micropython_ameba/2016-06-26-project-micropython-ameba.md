@@ -10,6 +10,10 @@ Ameba board is based on Realtek RTL8195A SoC. RTL8195A features in WiFi, NFC, an
 
 <!--more-->
 
+Check the full document here: [mpiot/RTL8195A](http://cwyark.github.io/mpiot/rtl8195a/install.html)
+
+And the forked repository is in here , please feel free to leave you comments or pull request: [github](https://github.com/cwyark/micropython)
+
 Related posts
 
 <ul>
