@@ -76,14 +76,6 @@ If you need hybrid mode (STA_AP mode), not problem.
 >>> ap_ssid = "TARGET-AP-SSID"
 >>> ap_auth = (WLAN.WPA2_AES_PSK, "TARGET-AP-PASSWORD")
 >>> sta.connect(ssid=target_ssid, auth=target_auth, dhcp=True)
->>> print("now set up the AP")
->>> my_ssid = "MY-SSID"
->>> my_auth = (WLAN.WPA2_AES_PSK, "MY-AP-PASSWORD")
->>> ap.start_ap(ssid=my_ssid, auth=my_auth)
-```
-
-
-Also, there's some methods you can use.
 
 Like you can get the mac address of your NIC.
 
