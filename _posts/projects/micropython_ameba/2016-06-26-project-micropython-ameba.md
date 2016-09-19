@@ -1,12 +1,15 @@
 ---
-title: "[Project]Micropython@Ameba ports"
+title: "[Project]Micropython@RTL9105A ports"
 tagline: "A novel way to develope application on RTL8195A"
 description: "A novel way to develop application on RTL8195A"
 category: projects
 tags: [ameba, micropython, python, rtl8195a]
 ---
 
-Ameba board is based on Realtek RTL8195A SoC. RTL8195A features in WiFi, NFC, and other peripherals like GPIO, SPI, I2C, ADC, PWM and H/W crypto engine. Ameba board supports Arduino SDK, however, when I'm developing an application, I often compile, program, console printf, compile, program and console printf .... so I start to port micropython to Ameba board. By the help of micropython@Ameba, developers can facilitate developing applications instead of trouble shooting with compiled language.
+Ameba board is based on Realtek RTL8195A SoC. RTL8195A features in WiFi, NFC, and other peripherals like GPIO, SPI, I2C, ADC, DAC, PWM, SDIO and H/W crypto engine. Ameba board supports Arduino SDK, however, when I'm developing an application, I often compile, program, console printf, compile, program and console printf .... that is really waste of time. So I start to port micropython to Ameba board. By the help of micropython@RTL9105A, developers can facilitate developing applications instead of trouble shooting with compiled language.
+
+
+![MicroPython@RTL8195A](/images/projects/mp_rtl8195a/project_mp_rtl8195a.png)
 
 <!--more-->
 
