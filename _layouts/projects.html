@@ -5,20 +5,31 @@ layout: default
 
 <div class="main-post-list">
 
-  <ol class="post-list">
     {% for post in site.posts %}
       {% if post.categories contains "projects" %}
           <li>
             <h2 class="post-list__post-title post-title">
-                <a href="{{ site.baseurl }}{{ post.url | remove_first: '/' }}" title="{{ post.title }}">{{ post.title }}</a>
+                <a href="#{{ post.url | remove_first: '/' }}" title="{{ post.title }}">{{ post.title }}</a>
             </h2>
-            <p class="excerpt">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}&hellip;</p>
-            <a href="{{ site.baseurl }}{{ post.url | remove_first: '/' }}">read more ...</a>
-            <div class="post-list__meta">
-                <time datetime="{{ post.date | date: "%-d %b %Y" }}" class="post-list__meta--date date">{{ post.date | date: "%-d %b %Y" }}</time> &#8226;
-            </div>
+          </li>
+      {% endif %}
+    {% endfor %}
 
-            <hr class="post-list__divider">
+  <ol class="post-list">
+    {% for post in site.posts %}
+      {% if post.categories contains "projects" %}
+          <li>
+            <a id="{{post.url | remove_first: '/'}}">
+                <h2 class="post-list__post-title post-title">
+                    <a href="{{ site.baseurl }}{{ post.url | remove_first: '/' }}" title="{{ post.title }}">{{ post.title }}</a>
+                </h2>
+                <p class="excerpt">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}&hellip;</p>
+                <a href="{{ site.baseurl }}{{ post.url | remove_first: '/' }}">read more ...</a>
+                <div class="post-list__meta">
+                    <time datetime="{{ post.date | date: "%-d %b %Y" }}" class="post-list__meta--date date">{{ post.date | date: "%-d %b %Y" }}</time> &#8226;
+                </div>
+                <hr class="post-list__divider">
+            </a>
           </li>
       {% endif %}
     {% endfor %}
