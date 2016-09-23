@@ -6,9 +6,7 @@ category: projects
 tags: [ameba, micropython, python, rtl8195a]
 ---
 
-MicroPython@RTL8195A is an alternative platform of PyBoard and esp8266. Developers can write their own python script instead of native C language or Arduino C.
-
-It's is python users or newbies friendly platform to dive into the microcontroller, especially for wireless products.
+MicroPython@RTL8195A is an alternative platform of [PyBoard](https://micropython.org/) and [Esp8266](https://www.kickstarter.com/projects/214379695/micropython-on-the-esp8266-beautifully-easy-iot). Developers can write their own python script instead of native C language or Arduino C. MicroPython is python users or newbies friendly platform to dive into the microcontroller, especially for wireless products.
 
 ![MicroPython@RTL8195A](/images/projects/mp_rtl8195a/project_mp_rtl8195a.png)
 
