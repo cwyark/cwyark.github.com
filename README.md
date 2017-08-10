@@ -3,7 +3,7 @@
 ## How to use ?
 
 ```bash
-$> docker run -it --rm --name jekyll-build -v $PWD:/srv/jekyll sh -c "bundle install;bundle exec jekyll serve"
+$> docker run -it --rm --name jekyll-build -v $PWD:/srv/jekyll -p 4000:4000 jekyll/jekyll sh -c "bundle install;bundle exec jekyll serve"
 ```
 
 ### Creator
