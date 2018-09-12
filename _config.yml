@@ -1,28 +1,16 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your entire site, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve`. If you change this file, please restart the server process.
-
-# Theme Settings
-#
-# Review documentation to determine if you should use `theme` or `remote_theme`
-# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
-
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
 title                    : "Cwyark"
 title_separator          : "-"
-name                     : "ChesterTseng"
-description              : "I'm Chester, an enginner, a hjkl vimer"
+name                     : "YuSheng"
+description              : "I'm YuSheng, an enginner, a hjkl vimer"
 url                      : "https://blog.cwyark.me" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "cwyark/cwyark.github.com" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/default-teaser.jpg" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
@@ -58,9 +46,9 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-search                   : # true, false (default)
-search_full_content      : # true, false (default)
-search_provider          : # lunr (default), algolia
+search                   : true # true, false (default)
+search_full_content      : true # true, false (default)
+search_provider          : lunr # lunr (default), algolia
 algolia:
   application_id         : # YOUR_APPLICATION_ID
   index_name             : # YOUR_INDEX_NAME
@@ -90,10 +78,10 @@ social:
 
 # Analytics
 analytics:
-  provider               : google # false (default), "google", "google-universal", "custom"
+  provider               : google-gtag # false (default), "google", "google-universal", "custom"
   google:
     tracking_id          : UA-53699376-4
-    anonymize_ip         : true # true, false (default)
+    anonymize_ip         : false # true, false (default)
 
 
 # Site Author
@@ -196,7 +184,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Taipei
 
 
 # Plugins (previously gems:)

@@ -6,8 +6,13 @@ services:
     image: jekyll/jekyll:latest
     volumes:
       - $PWD:/srv/jekyll
-      - $PWD/vendor/bundle:/usr/local/bundle
+      - bundles:/usr/local/bundle
+      - site:/srv/jekyll/_site
     ports:
       - 4000:4000
       - 35729:35729
       - 3000:3000
+
+volumes:
+  site:
+  bundles:
